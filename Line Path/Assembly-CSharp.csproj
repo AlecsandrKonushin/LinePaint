@@ -83,7 +83,6 @@
      <Compile Include="Assets\YandexGame\Example\Scripts\LogInStartMassage.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\ImageLoadYG.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\LanguageExample.cs" />
-     <Compile Include="Assets\Game(LinePaint)\Scripts\Monetization\AdShower.cs" />
      <None Include="Assets\YandexGame\Addons\Auto Localization\JsonDotNet\link.xml" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Unity 2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

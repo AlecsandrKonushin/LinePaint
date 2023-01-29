@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using YG;
@@ -14,6 +15,16 @@ namespace LinePaint
         public Text LevelText { get => levelText; }
         public Text TotalDiamonds { get => totalDiamonds; }
         public GameObject panel_loading;
+
+        private void OnEnable()
+        {
+            YandexGame.OpenFullAdEvent += LevelCompleted;
+        }
+
+        private void OnDisable()
+        {
+            YandexGame.OpenFullAdEvent -= LevelCompleted;
+        }
 
         private void Start()
         {
@@ -56,8 +67,6 @@ namespace LinePaint
             mainMenu.SetActive(false);
             levelCompleteMenu.SetActive(true);
             totalDiamonds.text = "" + GameManager_paint.totalDiamonds;
-            
-            // TODO: Show interstitial
         }
         public void click_menu()
         {
