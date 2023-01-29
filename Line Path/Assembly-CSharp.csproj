@@ -76,7 +76,6 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\YandexGame.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\DestroyObj.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\RewardedAd.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\SaverTest.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\LanguageYG.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\GraphicSettingsYG.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\SwitchSceneTest.cs" />

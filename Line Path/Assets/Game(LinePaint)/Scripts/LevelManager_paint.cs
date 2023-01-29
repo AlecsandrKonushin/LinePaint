@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 namespace LinePaint
 {
@@ -23,14 +25,26 @@ namespace LinePaint
         private SwipeControl_paint swipeControl;
         private BrushController currentBrush;
 
-        // Start is called before the first frame update
-        void Start()
+        private void OnEnable()
         {
-            // TODO: Move to save manager
+            YandexGame.GetDataEvent += OnGetData;
+        }
 
-            GameManager_paint.currentLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
-            GameManager_paint.totalDiamonds = PlayerPrefs.GetInt("TotalDiamonds", 0);
-            
+        private void OnDisable()
+        {
+            YandexGame.GetDataEvent -= OnGetData;
+        }
+
+        private void Start()
+        {
+            OnGetData();
+        }
+
+        private void OnGetData()
+        {
+            GameManager_paint.currentLevel = YandexGame.savesData.CurrentLevel;
+            GameManager_paint.totalDiamonds = YandexGame.savesData.TotalDiamonds;
+
             uIManager.TotalDiamonds.text = "" + GameManager_paint.totalDiamonds;
             uIManager.LevelText.text = "Level " + (GameManager_paint.currentLevel + 1);
             GameManager_paint.gameStatus = GameStatus.Playing;
@@ -38,17 +52,21 @@ namespace LinePaint
             swipeControl.SetLevelManager(this);
 
             grid = new Grid();
-            grid.Initialize(leveldataArray[GameManager_paint.currentLevel].width, leveldataArray[GameManager_paint.currentLevel].height, _cellSize);
-            cells = new Cell[leveldataArray[GameManager_paint.currentLevel].width, leveldataArray[GameManager_paint.currentLevel].height];
+            grid.Initialize(leveldataArray[GameManager_paint.currentLevel].width,
+                leveldataArray[GameManager_paint.currentLevel].height, _cellSize);
+            cells = new Cell[leveldataArray[GameManager_paint.currentLevel].width,
+                leveldataArray[GameManager_paint.currentLevel].height];
 
             CreateGrid(Vector3.zero);
 
             currentBrush = Instantiate(brushPefab, Vector3.zero, Quaternion.identity);
             currentBrush.currentCoords = leveldataArray[GameManager_paint.currentLevel].brushStartCoords;
-            Vector3 brushStartPos = grid.GetCellWorldPosition(leveldataArray[GameManager_paint.currentLevel].brushStartCoords.x, leveldataArray[GameManager_paint.currentLevel].brushStartCoords.y);
+            Vector3 brushStartPos = grid.GetCellWorldPosition(leveldataArray[GameManager_paint.currentLevel].brushStartCoords.x,
+                leveldataArray[GameManager_paint.currentLevel].brushStartCoords.y);
             currentBrush.transform.position = brushStartPos;
 
-           gameCamera.ZoomPerspectiveCamera(leveldataArray[GameManager_paint.currentLevel].width, leveldataArray[GameManager_paint.currentLevel].height);
+            gameCamera.ZoomPerspectiveCamera(leveldataArray[GameManager_paint.currentLevel].width,
+                leveldataArray[GameManager_paint.currentLevel].height);
             CompleteBoard();
         }
 
@@ -109,15 +127,14 @@ namespace LinePaint
                             GameManager_paint.currentLevel = 0;
                         }
 
-                        // TODO: Move to save manager
-
-                        PlayerPrefs.SetInt("CurrentLevel", GameManager_paint.currentLevel);
+                        GameManager_paint.currentLevel = GameManager_paint.currentLevel;
                         GameManager_paint.totalDiamonds += 15;
-                        PlayerPrefs.SetInt("TotalDiamonds", GameManager_paint.totalDiamonds);
+                        YandexGame.savesData.TotalDiamonds = GameManager_paint.totalDiamonds;
+                        
+                        YandexGame.SaveProgress();
 
                         uIManager.LevelCompleted();
                     }
-
                 }
 
                 currentBrush.transform.position = finalPos;

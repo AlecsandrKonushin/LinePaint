@@ -19,19 +19,26 @@ namespace LinePaint
         private void OnEnable()
         {
             YandexGame.OpenFullAdEvent += LevelCompleted;
+            YandexGame.GetDataEvent += OnGetData;
         }
 
         private void OnDisable()
         {
             YandexGame.OpenFullAdEvent -= LevelCompleted;
+            YandexGame.GetDataEvent -= OnGetData;
         }
 
         private void Start()
         {
-            // TODO: Move to save manager
+            OnGetData();
+        }
 
-            sountBtnOff.SetActive(PlayerPrefs.GetInt("SoundOn", 1) == 0 ? true : false);
-            AudioListener.volume = PlayerPrefs.GetInt("SoundOn", 1);
+        private void OnGetData()
+        {
+            var savesDataVolume = YandexGame.savesData.Volume;
+            
+            sountBtnOff.SetActive(savesDataVolume == 0);
+            AudioListener.volume = savesDataVolume;
 
             settingsBtn.onClick.AddListener(() => OnClick(settingsBtn));
             nextButton.onClick.AddListener(() => OnClick(nextButton));
@@ -52,12 +59,13 @@ namespace LinePaint
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                     break;
                 case "SoundBtn":
-
-                    // TODO: Move to save manager
-
-                    PlayerPrefs.SetInt("SoundOn", PlayerPrefs.GetInt("SoundOn", 1) == 0 ? 1 : 0);
-                    sountBtnOff.SetActive(PlayerPrefs.GetInt("SoundOn", 1) == 0 ? true : false);
-                    AudioListener.volume = PlayerPrefs.GetInt("SoundOn", 1);
+                    var savesDataVolume = YandexGame.savesData.Volume;
+                    
+                    YandexGame.savesData.Volume = savesDataVolume == 0 ? 1 : 0;
+                    sountBtnOff.SetActive(savesDataVolume == 0);
+                    AudioListener.volume = savesDataVolume;
+                    
+                    YandexGame.SaveProgress();
                     break;
             }
         }

@@ -860,7 +860,7 @@ namespace YG
                     public string entries;
                     public int[] rank;
                     public string[] photo;
-                    public string[] playersName;
+                    public string[] playersName;    
                     public int[] scorePlayers;
                 }
 
@@ -881,9 +881,9 @@ namespace YG
                     public string language = "ru";
 
                     // Ваши сохранения
-                    public int money = 1;
-                    public string newPlayerName = "Hello!";
-                    public bool[] openLevels = new bool[3];
+                    public int Volume = 1;
+                    public int CurrentLevel;
+                    public int TotalDiamonds;
                 }
         #endregion Json
     }
