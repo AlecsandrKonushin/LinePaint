@@ -23,7 +23,7 @@ MonoBehaviour:
   languages:
     ru: 1
     en: 1
-    tr: 1
+    tr: 0
     az: 0
     be: 0
     he: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
     uk: 0
     uz: 0
   fonts:
-    defaultFont: {fileID: 0}
+    defaultFont: {fileID: 12800000, guid: 04d03c77459d10e41bdcd9c6850abd0f, type: 3}
     ru: {fileID: 0}
     en: {fileID: 0}
     tr: {fileID: 0}
