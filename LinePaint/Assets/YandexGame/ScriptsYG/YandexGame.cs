@@ -884,6 +884,7 @@ namespace YG
                     public int Volume = 1;
                     public int CurrentLevel;
                     public int TotalDiamonds;
+                    public bool IsFirstLevelCompleted;
                 }
         #endregion Json
     }

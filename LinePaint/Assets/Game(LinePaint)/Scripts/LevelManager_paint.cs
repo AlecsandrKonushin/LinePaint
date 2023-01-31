@@ -217,6 +217,12 @@ namespace LinePaint
 
             solutionCamera.ZoomOrthographicSizeCamera(leveldataArray[GameManager_paint.currentLevel].width +2, leveldataArray[GameManager_paint.currentLevel].height+2);
 
+            if (GameManager_paint.currentLevel != 0 && YandexGame.savesData.IsFirstLevelCompleted == false)
+            {
+                YandexGame.savesData.IsFirstLevelCompleted = true;
+                YandexGame.SaveProgress();
+            }    
+            
             for (int i = 0; i < leveldataArray[GameManager_paint.currentLevel].completePattern.Count; i++)
             {
                 Vector3 startPos = gridOriginPos + grid.GetCellWorldPosition(leveldataArray[GameManager_paint.currentLevel].completePattern[i].startCoord);
