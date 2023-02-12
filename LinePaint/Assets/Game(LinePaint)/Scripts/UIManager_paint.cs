@@ -8,7 +8,7 @@ namespace LinePaint
 {
     public class UIManager_paint : MonoBehaviour
     {
-        [SerializeField] private Text totalDiamonds, diamondsEarned, levelText, infoText;
+        [SerializeField] private Text totalDiamonds, diamondsEarned, levelText, controlInfoText, infoText;
         [SerializeField] private GameObject mainMenu, levelCompleteMenu, extraBtnHolder, sountBtnOff;
         [SerializeField] private Button settingsBtn, nextButton, soundBtn, vbrationBtn, retryBtn;
 
@@ -19,13 +19,13 @@ namespace LinePaint
         private void OnEnable()
         {
             YandexGame.OpenFullAdEvent += LevelCompleted;
-            YandexGame.GetDataEvent += OnGetData;
+            //YandexGame.GetDataEvent += OnGetData;
         }
 
         private void OnDisable()
         {
             YandexGame.OpenFullAdEvent -= LevelCompleted;
-            YandexGame.GetDataEvent -= OnGetData;
+            //YandexGame.GetDataEvent -= OnGetData;
         }
 
         private void Start()
@@ -37,10 +37,10 @@ namespace LinePaint
         {
             var savesDataVolume = YandexGame.savesData.Volume;
             
-            if (YandexGame.savesData.IsFirstLevelCompleted)
+            if (GameManager_paint.currentLevel >= 1)
             {
                 infoText.gameObject.SetActive(false);
-                YandexGame.SaveProgress();
+                controlInfoText.gameObject.SetActive(false);
             }  
             
             sountBtnOff.SetActive(savesDataVolume == 0);

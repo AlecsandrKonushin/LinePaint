@@ -25,15 +25,15 @@ namespace LinePaint
         private SwipeControl_paint swipeControl;
         private BrushController currentBrush;
 
-        private void OnEnable()
-        {
-            YandexGame.GetDataEvent += OnGetData;
-        }
+        //private void OnEnable()
+        //{
+        //    YandexGame.GetDataEvent += OnGetData;
+        //}
 
-        private void OnDisable()
-        {
-            YandexGame.GetDataEvent -= OnGetData;
-        }
+        //private void OnDisable()
+        //{
+        //    YandexGame.GetDataEvent -= OnGetData;
+        //}
 
         private void Start()
         {
@@ -43,6 +43,7 @@ namespace LinePaint
         private void OnGetData()
         {
             GameManager_paint.currentLevel = YandexGame.savesData.CurrentLevel;
+            Debug.Log($"CURRENT LEVEL = {YandexGame.savesData.CurrentLevel}");
             GameManager_paint.totalDiamonds = YandexGame.savesData.TotalDiamonds;
 
             uIManager.TotalDiamonds.text = "" + GameManager_paint.totalDiamonds;
@@ -126,6 +127,8 @@ namespace LinePaint
                         {
                             GameManager_paint.currentLevel = 0;
                         }
+
+                        Debug.Log($"SAVE CURRENT LEVEL = {GameManager_paint.currentLevel}");
 
                         YandexGame.savesData.CurrentLevel = GameManager_paint.currentLevel;
                         GameManager_paint.totalDiamonds += 15;
@@ -216,13 +219,7 @@ namespace LinePaint
             Vector3 gridOriginPos = solutionCamera.transform.position - offset;
 
             solutionCamera.ZoomOrthographicSizeCamera(leveldataArray[GameManager_paint.currentLevel].width +2, leveldataArray[GameManager_paint.currentLevel].height+2);
-
-            if (GameManager_paint.currentLevel != 0 && YandexGame.savesData.IsFirstLevelCompleted == false)
-            {
-                YandexGame.savesData.IsFirstLevelCompleted = true;
-                YandexGame.SaveProgress();
-            }    
-            
+                        
             for (int i = 0; i < leveldataArray[GameManager_paint.currentLevel].completePattern.Count; i++)
             {
                 Vector3 startPos = gridOriginPos + grid.GetCellWorldPosition(leveldataArray[GameManager_paint.currentLevel].completePattern[i].startCoord);

@@ -10,11 +10,11 @@ public class GetPlayerData : MonoBehaviour
 
     private void OnEnable()
     {
-        YandexGame.GetDataEvent += DebugData;
+        //YandexGame.GetDataEvent += DebugData;
     }
     private void OnDisable()
     {
-        YandexGame.GetDataEvent -= DebugData;
+        //YandexGame.GetDataEvent -= DebugData;
     }
 
     private void Start()
