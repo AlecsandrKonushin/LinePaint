@@ -1504,6 +1504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YandexGame
       objectReference: {fileID: 0}
+    - target: {fileID: 2211564899198745197, guid: caf9732433f4dc044845763962493607, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1550,23 +1554,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf9732433f4dc044845763962493607, type: 3}
---- !u!1 &779544583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2211564899198745197, guid: caf9732433f4dc044845763962493607, type: 3}
-  m_PrefabInstance: {fileID: 779544582}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &779544584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779544583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f5f6f919d9254b61bccc2981a77de98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &825216578
 GameObject:
   m_ObjectHideFlags: 0
