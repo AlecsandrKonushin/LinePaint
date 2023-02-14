@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Game(LinePaint)/Scripts/SwipeControl_paint.cs" />
+    <Compile Include="Assets/Game(LinePaint)/Scripts/AppManager.cs" />
     <Compile Include="Assets/Game(LinePaint)/Scripts/SoundManager_paint.cs" />
     <Compile Include="Assets/YandexGame/Example/Scripts/RewardedAd.cs" />
     <Compile Include="Assets/YandexGame/ScriptsYG/InfoYG.cs" />
@@ -87,7 +88,7 @@
     <Compile Include="Assets/YandexGame/ScriptsYG/ImageLoadYG.cs" />
     <Compile Include="Assets/YandexGame/ScriptsYG/ViewingAds.cs" />
     <Compile Include="Assets/YandexGame/ScriptsYG/LeaderboardYG.cs" />
-    <Compile Include="Assets/Game(LinePaint)/Scripts/AppManager.cs" />
+    <Compile Include="Assets/Game(LinePaint)/Scripts/Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/YandexGame/Addons/Auto Localization/JsonDotNet/link.xml" />

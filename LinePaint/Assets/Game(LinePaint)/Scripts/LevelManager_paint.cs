@@ -38,6 +38,8 @@ namespace LinePaint
         private void Start()
         {
             OnGetData();
+
+            AppManager.Instance.ShowAd();
         }
 
         private void OnGetData()

@@ -2,13 +2,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using YG;
 
-public class AppManager : MonoBehaviour
+public class AppManager : Singleton<AppManager>
 {
-    private void Awake()
+    [SerializeField] private YandexGame yandex;
+
+    protected override void AfterAwaik()
     {
         YandexGame.GetDataEvent += () =>
          {
              SceneManager.LoadScene(1);
          };
+    }
+
+    public void ShowAd()
+    {
+        yandex._FullscreenShow();
     }
 }
