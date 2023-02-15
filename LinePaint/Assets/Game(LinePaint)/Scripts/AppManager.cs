@@ -18,4 +18,12 @@ public class AppManager : Singleton<AppManager>
     {
         yandex._FullscreenShow();
     }
+
+    public void RemoveSave()
+    {
+        YandexGame.savesData.CurrentLevel = 0;
+        YandexGame.savesData.TotalDiamonds = 0;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

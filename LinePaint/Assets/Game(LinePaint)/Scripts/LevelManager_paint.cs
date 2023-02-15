@@ -45,7 +45,6 @@ namespace LinePaint
         private void OnGetData()
         {
             GameManager_paint.currentLevel = YandexGame.savesData.CurrentLevel;
-            Debug.Log($"CURRENT LEVEL = {YandexGame.savesData.CurrentLevel}");
             GameManager_paint.totalDiamonds = YandexGame.savesData.TotalDiamonds;
 
             uIManager.TotalDiamonds.text = "" + GameManager_paint.totalDiamonds;
@@ -129,8 +128,6 @@ namespace LinePaint
                         {
                             GameManager_paint.currentLevel = 0;
                         }
-
-                        Debug.Log($"SAVE CURRENT LEVEL = {GameManager_paint.currentLevel}");
 
                         YandexGame.savesData.CurrentLevel = GameManager_paint.currentLevel;
                         GameManager_paint.totalDiamonds += 15;
